@@ -1,0 +1,37 @@
+<app-layout>
+  <div class="jumbotron">
+    <h1>Worker List</h1>
+    <p>
+      Here are the register workers list
+    </p>
+  </div>
+
+  <div class="container user-list">
+    <div *ngIf="workers | async; let usersData; else loading">
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Mobile Number</th>
+              <th scope="col">Skills</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let worker of usersData; let i = index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{worker.firstName}} {{worker.lastName}}</td>
+              <td>{{worker.mobileNo}}</td>
+              <td>{{worker.workSlills}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <ng-template #loading>Loading User Data...</ng-template>
+  </div>
+
+
+</app-layout>

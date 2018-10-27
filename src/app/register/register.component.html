@@ -1,0 +1,168 @@
+<app-layout>
+  <div class="jumbotron">
+    <h1>Register</h1>
+    <p>
+      Register new worker
+    </p>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <form #formWorker="ngForm" (ngSubmit)="addWorker(formWorker)">
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="firstName"> <span class="required">*</span>First Name</label>
+                <input type="text" [(ngModel)]="worker.firstName" class="form-control" name="firstName" id="firstName"
+                  required>
+                <small id="emailHelp" class="form-text text-muted" *ngIf="!formWorker.form.controls.firstName?.valid && formWorker.form.controls.firstName?.touched">This
+                  field is required.</small>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" [(ngModel)]="worker.lastName" class="form-control" name="lastName" id="lastName">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="mobileNo"><span class="required">*</span>Mobile No#</label>
+                <input type="text" [(ngModel)]="worker.mobileNo" class="form-control" name="mobileNo" id="mobileNo"
+                  required>
+                <small id="emailHelp" class="form-text text-muted" *ngIf="!formWorker.form.controls.mobileNo?.valid && formWorker.form.controls.mobileNo?.touched">This
+                  field is required.</small>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="text" [(ngModel)]="worker.dob" class="form-control" name="dob" id="dob">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="email"><span class="required">*</span>State</label>
+                <select [(ngModel)]="worker.state" class="form-control" name="state" id="state" aria-describedby="emailHelp">
+                  <option [ngValue]="state" *ngFor="let state of stateList">{{state}}</option>
+                </select>
+
+                <small id="emailHelp" class="form-text text-muted" *ngIf="!formWorker.form.controls.state?.valid && formWorker.form.controls.state?.touched">Please,
+                  provide a valid E-mail.</small>
+              </div>
+            </div>
+            <div class="col-lg-6">
+
+              <div class="form-group">
+                <label for="email"><span class="required">*</span>District</label>
+                <select [(ngModel)]="worker.district" class="form-control" name="district" id="district"
+                  aria-describedby="emailHelp">
+                  <option [ngValue]="district" *ngFor="let district of stateList">{{district}}</option>
+                </select>
+
+                <small id="emailHelp" class="form-text text-muted" *ngIf="!formWorker.form.controls.state?.valid && formWorker.form.controls.state?.touched">Please,
+                  provide a valid E-mail.</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="mobileNo">Years of Experience</label>
+                <input type="text" [(ngModel)]="worker.yearsOfExperience" class="form-control" name="yearsOfExperience"
+                  id="yearsOfExperience">
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="dob"><span class="required">*</span>Work Skills</label>
+                <br>
+                <div class="form-check-inline" *ngFor="let skill of skillList">
+                  <label class="form-check-label" for="{{skill}}">
+                    <input type="checkbox" class="form-check-input" id="{{skill}}" name="optradio" value="{{skill}}">{{skill}}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="dailyPaymentRate">Daily Payment Rate</label>
+                <input type="text" [(ngModel)]="worker.dailyPaymentRate" class="form-control" name="dailyPaymentRate"
+                  id="dailyPaymentRate">
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" [(ngModel)]="worker.email" class="form-control" name="email" id="email"
+                  aria-describedby="emailHelp" email>
+                <small id="emailHelp" class="form-text text-muted" *ngIf="!formWorker.form.controls.email?.valid && formWorker.form.controls.email?.touched">Please,
+                  provide a valid E-mail.</small>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="passportAvailability">Do You Have Passport?</label>
+                <br>
+                <div class="form-check-inline">
+                  <label class="form-check-label" for="passportYes">
+                    <input type="radio" class="form-check-input" id="passportYes" name="passportAvailability" value="true">Yes
+                  </label>
+                </div>
+                <div class="form-check-inline">
+                  <label class="form-check-label" for="passportNo">
+                    <input type="radio" class="form-check-input" id="passportNo" name="passportAvailability" value="false">No
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+
+              <div class="form-group">
+                <label for="desiredWorkLocations">Preferred Work Locations</label>
+                <select [(ngModel)]="worker.district" class="form-control" name="desiredWorkLocations" id="desiredWorkLocations"
+                  aria-describedby="emailHelp">
+                  <option [ngValue]="desiredWorkLocation" *ngFor="let district of stateList">{{district}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-lg-6">
+
+              <div class="form-group">
+                <label for="address">Address</label>
+                <textarea rows="4" [(ngModel)]="worker.address" class="form-control" name="address" id="address"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" [disabled]="!formWorker.form.valid">Submit</button>
+        </form>
+        <br><br><br><br>
+      </div>
+
+    </div>
+  </div>
+</app-layout>
